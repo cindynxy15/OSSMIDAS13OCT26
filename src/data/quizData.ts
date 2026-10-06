@@ -170,7 +170,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     prompt: 'When working with stakeholders, you naturally focus on:',
     options: [
       { letter: 'A', text: 'Trust and rapport.', personaKey: 'mentor' },
-      { letter: 'B', text: 'Partnerships and opportunities.', personaKey: 'navigator' },
+      { letter: 'B', text: 'Systems and Processes', personaKey: 'navigator' },
       { letter: 'C', text: 'Insights and evidence.', personaKey: 'detective' },
       { letter: 'D', text: 'Structure and planning', personaKey: 'builder' }
     ],
