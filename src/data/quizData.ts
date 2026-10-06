@@ -13,7 +13,7 @@ export const PERSONAS: Record<PersonaKey, PersonaDetails> = {
     howYouCollaborate: 'You frequently partner with SEN, Counselling, ECG and Internship teams to ensure students receive holistic support.',
     imageSrc: '/src/assets/images/persona_mentor_1791254058562.jpg',
     medallionImageSrc: '/src/assets/images/medallion_mentor_1791263736672.jpg',
-    quote: '"People matter."',
+    quote: '"Let\'s talk"',
     goldenTitle: 'The Golden Touch of Heart & Empathy',
     goldenTouchLore: 'Like the mythical touch that turns stone into gold, your genuine compassion turns student self-doubt and hesitation into golden confidence and resilience.',
     colorScheme: {
@@ -94,7 +94,7 @@ export const PERSONAS: Record<PersonaKey, PersonaDetails> = {
     howYouCollaborate: 'You help schools, OSS teams and external partners work together to support students effectively.',
     imageSrc: '/src/assets/images/persona_builder_1791254092670.jpg',
     medallionImageSrc: '/src/assets/images/medallion_builder_1791263772298.jpg',
-    quote: '"We\'re better together."',
+    quote: '"Leave it to me"',
     goldenTitle: 'The Golden Touch of Unity & Harmony',
     goldenTouchLore: 'You bind disparate parts into a gilded whole—turning institutional silos into an interconnected golden ecosystem where every student is fully supported.',
     colorScheme: {
@@ -157,10 +157,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     id: 4,
     prompt: 'Which phrase describes you best?',
     options: [
-      { letter: 'A', text: '"People matter."', personaKey: 'mentor' },
+      { letter: 'A', text: '"Let\'s talk"', personaKey: 'mentor' },
       { letter: 'B', text: '"Let\'s make it happen."', personaKey: 'navigator' },
       { letter: 'C', text: '"Show me the data."', personaKey: 'detective' },
-      { letter: 'D', text: '"We\'re better together."', personaKey: 'builder' }
+      { letter: 'D', text: '"Leave it to me"', personaKey: 'builder' }
     ],
     botRemark: 'A motto says everything about how you make an impact in OSS.',
     goldenPonder: 'Four golden creeds etched into the foundation of Student Support.'
@@ -172,7 +172,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
       { letter: 'A', text: 'Trust and rapport.', personaKey: 'mentor' },
       { letter: 'B', text: 'Partnerships and opportunities.', personaKey: 'navigator' },
       { letter: 'C', text: 'Insights and evidence.', personaKey: 'detective' },
-      { letter: 'D', text: 'Alignment and collaboration.', personaKey: 'builder' }
+      { letter: 'D', text: 'Structure and planning', personaKey: 'builder' }
     ],
     botRemark: 'We are halfway through! Your MIDAS strengths are coming into focus.',
     goldenPonder: 'Halfway through the golden crucible! Your MIDAS resonance is crystallizing.'
@@ -194,10 +194,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     id: 7,
     prompt: 'At a team meeting, you are usually the one who:',
     options: [
-      { letter: 'A', text: 'Advocates for student needs.', personaKey: 'mentor' },
+      { letter: 'A', text: 'Gets everyone talking and makes sure people feel heard', personaKey: 'mentor' },
       { letter: 'B', text: 'Suggests practical solutions.', personaKey: 'navigator' },
       { letter: 'C', text: 'Brings useful statistics or trends.', personaKey: 'detective' },
-      { letter: 'D', text: 'Connects ideas from different teams.', personaKey: 'builder' }
+      { letter: 'D', text: 'Keeps track of the details and makes sure nothing falls through the cracks', personaKey: 'builder' }
     ],
     botRemark: 'Meetings are productive precisely because diverse colleagues bring these exact four contributions!',
     goldenPonder: 'Around the collaborative table, what golden contribution do you bring to light?'
