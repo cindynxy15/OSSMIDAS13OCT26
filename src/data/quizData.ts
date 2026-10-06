@@ -1,6 +1,17 @@
 import { PersonaDetails, PersonaKey, QuizQuestion, BlendedPersonaResult } from '../types/quiz';
 
-export const MIDAS_GOLDEN_AVATAR = '/src/assets/images/midas_golden_avatar_1791263723464.jpg';
+import midasAvatarImg from '../assets/images/midas_golden_avatar_1791263723464.jpg';
+import medallionMentorImg from '../assets/images/midas_medallion_mentor_1791276503522.jpg';
+import medallionNavigatorImg from '../assets/images/midas_medallion_navigator_1791276515203.jpg';
+import medallionDetectiveImg from '../assets/images/midas_medallion_detective_1791276526193.jpg';
+import medallionBuilderImg from '../assets/images/midas_medallion_builder_1791276539862.jpg';
+
+import personaMentorImg from '../assets/images/persona_mentor_1791254058562.jpg';
+import personaNavigatorImg from '../assets/images/persona_navigator_1791254071287.jpg';
+import personaDetectiveImg from '../assets/images/persona_detective_1791254082536.jpg';
+import personaBuilderImg from '../assets/images/persona_builder_1791254092670.jpg';
+
+export const MIDAS_GOLDEN_AVATAR = midasAvatarImg;
 
 export const PERSONAS: Record<PersonaKey, PersonaDetails> = {
   mentor: {
@@ -11,8 +22,8 @@ export const PERSONAS: Record<PersonaKey, PersonaDetails> = {
     midasConnection: 'Mentoring',
     superpower: 'Helping students feel supported, connected and confident.',
     howYouCollaborate: 'You frequently partner with SEN, Counselling, ECG and Internship teams to ensure students receive holistic support.',
-    imageSrc: '/src/assets/images/persona_mentor_1791254058562.jpg',
-    medallionImageSrc: '/src/assets/images/midas_medallion_mentor_1791276503522.jpg',
+    imageSrc: personaMentorImg,
+    medallionImageSrc: medallionMentorImg,
     quote: '"Let\'s talk"',
     goldenTitle: 'The Golden Touch of Heart & Empathy',
     goldenTouchLore: 'Like the mythical touch that turns stone into gold, your genuine compassion turns student self-doubt and hesitation into golden confidence and resilience.',
@@ -38,8 +49,8 @@ export const PERSONAS: Record<PersonaKey, PersonaDetails> = {
     midasConnection: 'Student Internship',
     superpower: 'Connecting students, schools and employers for meaningful learning experiences.',
     howYouCollaborate: 'You work closely with Schools, ECG, employers and student support teams to ensure successful internship outcomes.',
-    imageSrc: '/src/assets/images/persona_navigator_1791254071287.jpg',
-    medallionImageSrc: '/src/assets/images/midas_medallion_navigator_1791276515203.jpg',
+    imageSrc: personaNavigatorImg,
+    medallionImageSrc: medallionNavigatorImg,
     quote: '"Let\'s make it happen."',
     goldenTitle: 'The Golden Touch of Opportunity & Bridges',
     goldenTouchLore: 'You possess the Midas touch of enterprise—transforming classroom theory into golden bridges of industry experience and career launchpads.',
@@ -65,8 +76,8 @@ export const PERSONAS: Record<PersonaKey, PersonaDetails> = {
     midasConnection: 'Data & Analytics',
     superpower: 'Using evidence to improve decisions and student outcomes.',
     howYouCollaborate: 'You support all OSS teams by providing insights that help prioritise resources, identify students who may need support and evaluate impact.',
-    imageSrc: '/src/assets/images/persona_detective_1791254082536.jpg',
-    medallionImageSrc: '/src/assets/images/midas_medallion_detective_1791276526193.jpg',
+    imageSrc: personaDetectiveImg,
+    medallionImageSrc: medallionDetectiveImg,
     quote: '"Show me the data."',
     goldenTitle: 'The Golden Touch of Insight & Clarity',
     goldenTouchLore: 'You transmute raw, scattered data points into pure golden insights—revealing early risks and illuminating the most effective paths for student interventions.',
@@ -92,8 +103,8 @@ export const PERSONAS: Record<PersonaKey, PersonaDetails> = {
     midasConnection: 'Admin Support & Cross-Functional Coordination',
     superpower: 'Creating alignment across stakeholders and processes.',
     howYouCollaborate: 'You help schools, OSS teams and external partners work together to support students effectively.',
-    imageSrc: '/src/assets/images/persona_builder_1791254092670.jpg',
-    medallionImageSrc: '/src/assets/images/midas_medallion_builder_1791276539862.jpg',
+    imageSrc: personaBuilderImg,
+    medallionImageSrc: medallionBuilderImg,
     quote: '"Leave it to me"',
     goldenTitle: 'The Golden Touch of Unity & Harmony',
     goldenTouchLore: 'You bind disparate parts into a gilded whole—turning institutional silos into an interconnected golden ecosystem where every student is fully supported.',
