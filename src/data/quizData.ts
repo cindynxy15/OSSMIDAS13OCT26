@@ -218,10 +218,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     id: 9,
     prompt: 'Your colleagues often come to you because:',
     options: [
-      { letter: 'A', text: 'You are approachable and supportive.', personaKey: 'mentor' },
+      { letter: 'A', text: 'You’re a good listener and know how to talk things through.', personaKey: 'mentor' },
       { letter: 'B', text: 'You know how to navigate complex situations.', personaKey: 'navigator' },
       { letter: 'C', text: 'You can make sense of complicated information.', personaKey: 'detective' },
-      { letter: 'D', text: 'You know who to connect people with.', personaKey: 'builder' }
+      { letter: 'D', text: 'You’re organised and somehow always know what needs to be done.', personaKey: 'builder' }
     ],
     botRemark: 'Almost at the finish line! Question 10 is coming right up.',
     goldenPonder: 'Your colleagues know your unique touch! One final scenario remains.'
