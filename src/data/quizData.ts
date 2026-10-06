@@ -230,10 +230,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     id: 10,
     prompt: 'Student success is best achieved when:',
     options: [
-      { letter: 'A', text: 'Every student has someone who believes in them.', personaKey: 'mentor' },
-      { letter: 'B', text: 'Students gain meaningful real-world experiences.', personaKey: 'navigator' },
-      { letter: 'C', text: 'Decisions are guided by good data.', personaKey: 'detective' },
-      { letter: 'D', text: 'Multiple stakeholders work together effectively.', personaKey: 'builder' }
+      { letter: 'A', text: 'We build meaningful relationships and help students grow', personaKey: 'mentor' },
+      { letter: 'B', text: 'We connect students with opportunities to gain real-world experience', personaKey: 'navigator' },
+      { letter: 'C', text: 'We use data to understand students, identify needs early and enable timely, targeted support.', personaKey: 'detective' },
+      { letter: 'D', text: 'We keep things organised so that students and teams are well supported.', personaKey: 'builder' }
     ],
     botRemark: 'All questions completed! Computing your MIDAS persona...',
     goldenPonder: 'The final golden principle! Your MIDAS medallion is ready to be revealed.'
