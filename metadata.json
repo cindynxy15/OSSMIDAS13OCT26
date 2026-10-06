@@ -1,0 +1,6 @@
+{
+  "name": "Which MIDAS Role Are You? | RP OSS Quiz Bot",
+  "description": "Discover your MIDAS alter ego (The Mentor, The Internship Navigator, The Data Detective, or The Ecosystem Builder) in the Office of Student Support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
