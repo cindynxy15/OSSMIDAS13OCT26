@@ -204,12 +204,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 8,
-    prompt: 'Which achievement would make you most proud?',
+    prompt: 'Which achievement would make you proud?',
     options: [
-      { letter: 'A', text: 'Seeing a student gain confidence.', personaKey: 'mentor' },
-      { letter: 'B', text: 'Helping a student secure a valuable internship.', personaKey: 'navigator' },
+      { letter: 'A', text: 'Helping a student gain confidence, clarity or direction', personaKey: 'mentor' },
+      { letter: 'B', text: 'Connecting a student with an opportunity that makes a real difference to their career.', personaKey: 'navigator' },
       { letter: 'C', text: 'Using insights to improve a process.', personaKey: 'detective' },
-      { letter: 'D', text: 'Bringing different stakeholders together to solve a problem.', personaKey: 'builder' }
+      { letter: 'D', text: 'Putting a process in place that makes everyone’s work easier', personaKey: 'builder' }
     ],
     botRemark: 'Celebrations in student support are sweetest when tied to lasting transformation.',
     goldenPonder: 'True gold is measured in student triumphs and transformed journeys.'
