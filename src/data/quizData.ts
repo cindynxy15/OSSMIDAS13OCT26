@@ -132,10 +132,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     prompt: 'You are given a new project.',
     subtext: 'What excites you most?',
     options: [
-      { letter: 'A', text: 'Building relationships and helping people.', personaKey: 'mentor' },
-      { letter: 'B', text: 'Working with external partners and stakeholders.', personaKey: 'navigator' },
-      { letter: 'C', text: 'Analysing information to inform decisions.', personaKey: 'detective' },
-      { letter: 'D', text: 'Coordinating different teams to achieve a common goal.', personaKey: 'builder' }
+      { letter: 'A', text: 'Seeing someone grow, gain confidence and discover their potential.', personaKey: 'mentor' },
+      { letter: 'B', text: 'Turning a promising opportunity into something real and impactful.', personaKey: 'navigator' },
+      { letter: 'C', text: 'Discovering a pattern or insight that others have missed.', personaKey: 'detective' },
+      { letter: 'D', text: 'Finding a better, faster or more organised way to get things done.', personaKey: 'builder' }
     ],
     botRemark: 'New initiatives thrive when passion and varied strengths come together!',
     goldenPonder: 'A blank slate! What turns this new endeavour into pure gold?'
