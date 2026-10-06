@@ -20,10 +20,10 @@ export const AllRolesOverview: React.FC<AllRolesOverviewProps> = ({ onClose }) =
             The Golden Treasury of MIDAS · Office of Student Support
           </span>
           <h1 className="font-cinzel text-2xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-amber-300 to-yellow-200 mt-1">
-            The Four Golden Pillars of Student Support
+            The Four Golden Pillars & Medallions
           </h1>
           <p className="text-xs sm:text-sm text-amber-200/70 mt-0.5 font-serif italic">
-            Each role holds a distinct golden touch that elevates Republic Polytechnic scholars to their highest potential.
+            Each role holds a distinct solid-gold medallion representing their unique golden touch in Republic Polytechnic.
           </p>
         </div>
 
@@ -35,8 +35,8 @@ export const AllRolesOverview: React.FC<AllRolesOverviewProps> = ({ onClose }) =
         </button>
       </div>
 
-      {/* Role Selection Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      {/* The 4 Medallions Interactive Gallery Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {(Object.keys(PERSONAS) as PersonaKey[]).map((key) => {
           const item = PERSONAS[key];
           const isSelected = selectedKey === key;
@@ -47,30 +47,43 @@ export const AllRolesOverview: React.FC<AllRolesOverviewProps> = ({ onClose }) =
                 goldenSound.playGoldenChime();
                 setSelectedKey(key);
               }}
-              className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+              className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between group ${
                 isSelected
-                  ? 'bg-amber-500/20 border-amber-400 ring-2 ring-amber-400/40 shadow-lg text-amber-100'
+                  ? 'bg-amber-500/20 border-amber-400 ring-2 ring-amber-400/40 shadow-xl text-amber-100 scale-[1.02]'
                   : 'bg-[#10131d] border-stone-800 hover:border-amber-500/50 hover:bg-[#161a29] text-amber-200/70'
               }`}
             >
-              <div className="flex items-center gap-2 mb-2">
-                <span
-                  className={`w-6 h-6 rounded-md font-cinzel font-bold text-xs flex items-center justify-center ${
-                    isSelected ? 'bg-gradient-to-r from-amber-400 to-yellow-400 text-stone-950' : 'bg-[#1c2233] text-amber-300'
-                  }`}
-                >
-                  {item.letter}
-                </span>
-                <span className="text-xs font-cinzel font-bold text-amber-400 uppercase tracking-wide truncate">
-                  {item.midasConnection}
-                </span>
+              <div>
+                {/* Medallion Coin Visual */}
+                <div className="relative w-full aspect-square rounded-xl overflow-hidden border-2 border-amber-400/60 shadow-lg bg-[#090b10] mb-3 group-hover:border-amber-400 transition-colors">
+                  <img
+                    src={item.medallionImageSrc}
+                    alt={`${item.title} Medallion`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute top-2 left-2 w-7 h-7 rounded-lg font-cinzel font-bold text-xs flex items-center justify-center bg-stone-950/80 border border-amber-400/80 text-amber-300 shadow">
+                    {item.letter}
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <span className="text-xs font-cinzel font-bold text-amber-400 uppercase tracking-wide block truncate">
+                    {item.midasConnection}
+                  </span>
+                  <h3 className="font-cinzel text-base font-bold text-amber-200">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-amber-200/60 font-serif italic line-clamp-1">
+                    {item.goldenTitle}
+                  </p>
+                </div>
               </div>
-              <h3 className="font-cinzel text-base font-bold text-amber-200">
-                {item.title}
-              </h3>
-              <p className="text-xs text-amber-200/50 mt-1 font-serif italic line-clamp-1">
-                {item.goldenTitle}
-              </p>
+
+              <div className="pt-3 mt-3 border-t border-amber-500/15 flex items-center justify-between text-xs font-cinzel text-amber-300/80">
+                <span>{isSelected ? '✦ Selected' : 'View Details'}</span>
+                <span>→</span>
+              </div>
             </button>
           );
         })}
@@ -80,7 +93,7 @@ export const AllRolesOverview: React.FC<AllRolesOverviewProps> = ({ onClose }) =
       <div className="bg-[#121624] border-2 border-amber-500/40 rounded-3xl p-6 sm:p-10 shadow-2xl">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-5 flex flex-col items-center text-center">
-            <div className="w-60 h-60 sm:w-64 sm:h-64 rounded-2xl overflow-hidden border-2 border-amber-400 shadow-2xl shadow-amber-500/20 bg-[#090b10]">
+            <div className="w-64 h-64 rounded-2xl overflow-hidden border-2 border-amber-400 shadow-2xl shadow-amber-500/20 bg-[#090b10]">
               <img
                 src={persona.medallionImageSrc}
                 alt={persona.title}

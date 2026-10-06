@@ -137,11 +137,19 @@ export const QuizStepper: React.FC<QuizStepperProps> = ({
                 const persona = PERSONAS[key];
                 const score = liveScores[key];
                 return (
-                  <div key={key} className="bg-[#141824] p-2.5 rounded-xl border border-amber-500/20 text-center">
+                  <div key={key} className="bg-[#141824] p-3 rounded-xl border border-amber-500/20 text-center flex flex-col items-center">
+                    <div className="w-10 h-10 rounded-full overflow-hidden border border-amber-400/80 mb-1.5 shadow bg-stone-900">
+                      <img
+                        src={persona.medallionImageSrc}
+                        alt={persona.title}
+                        className="w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
                     <span className="text-xs font-cinzel font-semibold text-amber-200 block truncate">
                       {persona.title.replace('The ', '')}
                     </span>
-                    <span className="text-lg font-bold text-amber-300 font-mono tabular-nums">
+                    <span className="text-base font-bold text-amber-300 font-mono tabular-nums mt-0.5">
                       {score} <span className="text-xs font-normal text-amber-200/50">pts</span>
                     </span>
                   </div>

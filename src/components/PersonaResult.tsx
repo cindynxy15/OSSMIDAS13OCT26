@@ -348,12 +348,24 @@ ${appUrl}`;
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2.5">
-                    <span className="w-6 h-6 rounded-lg bg-[#1c2233] text-amber-300 text-xs font-cinzel font-bold flex items-center justify-center">
-                      {persona.letter}
-                    </span>
-                    <span className="font-cinzel font-bold text-amber-100 text-sm">
-                      {persona.title}
-                    </span>
+                    <div className="w-9 h-9 rounded-full overflow-hidden border border-amber-400/80 shrink-0 bg-stone-900 shadow">
+                      <img
+                        src={persona.medallionImageSrc}
+                        alt={persona.title}
+                        className="w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs font-cinzel font-bold text-amber-400">
+                          {persona.letter} ·
+                        </span>
+                        <span className="font-cinzel font-bold text-amber-100 text-sm">
+                          {persona.title}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                   <span className="text-sm font-bold text-amber-300 font-mono tabular-nums">
                     {score} / 10 <span className="text-xs font-normal text-amber-200/50">({percent}%)</span>
