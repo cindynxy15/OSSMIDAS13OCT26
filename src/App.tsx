@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 import { OptionLetter, ScoreRecord, BlendedPersonaResult } from './types/quiz';
 import { QUIZ_QUESTIONS, calculatePersonaResult } from './data/quizData';
 import { Header } from './components/Header';
-import { QuizBot } from './components/QuizBot';
 import { QuizStepper } from './components/QuizStepper';
 import { PersonaResult } from './components/PersonaResult';
 import { AllRolesOverview } from './components/AllRolesOverview';
@@ -17,7 +16,6 @@ import { GoldenCursorTrail } from './components/GoldenCursorTrail';
 export default function App() {
   const [answers, setAnswers] = useState<Record<number, OptionLetter>>({});
   const [view, setView] = useState<'quiz' | 'result' | 'all-roles'>('quiz');
-  const [mode, setMode] = useState<'bot' | 'stepper'>('bot');
   const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
 
   const handleSelectOption = (questionId: number, letter: OptionLetter) => {
@@ -67,32 +65,18 @@ export default function App() {
         onOpenGuide={() => setIsGuideOpen(true)}
         onOpenAllRoles={() => setView('all-roles')}
         activeView={view}
-        mode={mode}
-        onToggleMode={(newMode) => {
-          setMode(newMode);
-          if (view !== 'quiz') setView('quiz');
-        }}
+        onGoToQuiz={() => setView('quiz')}
       />
 
       {/* Main Viewport Container */}
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col">
         {view === 'quiz' && (
           <div className="flex-1 flex flex-col">
-            {mode === 'bot' ? (
-              <QuizBot
-                answers={answers}
-                onSelectOption={handleSelectOption}
-                onFinishQuiz={handleFinishQuiz}
-                onSwitchToStepper={() => setMode('stepper')}
-              />
-            ) : (
-              <QuizStepper
-                answers={answers}
-                onSelectOption={handleSelectOption}
-                onFinishQuiz={handleFinishQuiz}
-                onSwitchToBot={() => setMode('bot')}
-              />
-            )}
+            <QuizStepper
+              answers={answers}
+              onSelectOption={handleSelectOption}
+              onFinishQuiz={handleFinishQuiz}
+            />
           </div>
         )}
 

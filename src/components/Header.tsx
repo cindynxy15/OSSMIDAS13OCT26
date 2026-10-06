@@ -6,8 +6,7 @@ interface HeaderProps {
   onOpenGuide: () => void;
   onOpenAllRoles: () => void;
   activeView: 'quiz' | 'result' | 'all-roles';
-  mode: 'bot' | 'stepper';
-  onToggleMode: (mode: 'bot' | 'stepper') => void;
+  onGoToQuiz: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -15,8 +14,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenGuide,
   onOpenAllRoles,
   activeView,
-  mode,
-  onToggleMode,
+  onGoToQuiz,
 }) => {
   const [soundOn, setSoundOn] = useState<boolean>(goldenSound.enabled);
 
@@ -45,17 +43,9 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Zone 2: Clean text navigation links */}
         <nav className="hidden md:flex items-center gap-6 text-xs sm:text-sm font-medium tracking-wide text-amber-200/80">
           <button
-            onClick={() => onToggleMode('bot')}
+            onClick={onGoToQuiz}
             className={`cursor-pointer transition-colors hover:text-amber-300 whitespace-nowrap ${
-              mode === 'bot' && activeView === 'quiz' ? 'text-amber-300 font-bold border-b-2 border-amber-400 pb-0.5' : ''
-            }`}
-          >
-            Touch Oracle
-          </button>
-          <button
-            onClick={() => onToggleMode('stepper')}
-            className={`cursor-pointer transition-colors hover:text-amber-300 whitespace-nowrap ${
-              mode === 'stepper' && activeView === 'quiz' ? 'text-amber-300 font-bold border-b-2 border-amber-400 pb-0.5' : ''
+              activeView === 'quiz' ? 'text-amber-300 font-bold border-b-2 border-amber-400 pb-0.5' : ''
             }`}
           >
             Gilded Cards

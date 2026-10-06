@@ -95,7 +95,7 @@ export const MidasGuideModal: React.FC<MidasGuideModalProps> = ({ isOpen, onClos
             onClick={onClose}
             className="px-5 py-2.5 text-xs font-cinzel font-bold text-stone-950 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 hover:brightness-110 rounded-xl cursor-pointer transition-all shadow-md"
           >
-            Understood, Return to Oracle
+            Understood, Return to Cards
           </button>
         </div>
       </div>

@@ -31,7 +31,7 @@ export const AllRolesOverview: React.FC<AllRolesOverviewProps> = ({ onClose }) =
           onClick={onClose}
           className="px-4 py-2 text-xs font-cinzel font-bold text-amber-200 bg-[#1a2030] hover:bg-[#232b40] border border-amber-500/30 rounded-xl cursor-pointer transition-colors shadow self-start sm:self-auto"
         >
-          Return to Oracle
+          Return to Gilded Cards
         </button>
       </div>
 

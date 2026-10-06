@@ -7,14 +7,12 @@ interface QuizStepperProps {
   answers: Record<number, OptionLetter>;
   onSelectOption: (questionId: number, letter: OptionLetter) => void;
   onFinishQuiz: () => void;
-  onSwitchToBot: () => void;
 }
 
 export const QuizStepper: React.FC<QuizStepperProps> = ({
   answers,
   onSelectOption,
   onFinishQuiz,
-  onSwitchToBot,
 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(() => {
     for (let i = 0; i < QUIZ_QUESTIONS.length; i++) {
@@ -115,12 +113,6 @@ export const QuizStepper: React.FC<QuizStepperProps> = ({
               className="px-3 py-1.5 text-xs font-cinzel font-medium text-amber-200/90 hover:text-amber-100 bg-[#1c2233] hover:bg-[#252d42] border border-amber-500/30 rounded-lg cursor-pointer transition-colors"
             >
               {showLivePulse ? 'Hide Balance' : 'Golden Balance'}
-            </button>
-            <button
-              onClick={onSwitchToBot}
-              className="px-3 py-1.5 text-xs font-cinzel font-medium text-amber-200/90 hover:text-amber-100 bg-[#1c2233] hover:bg-[#252d42] border border-amber-500/30 rounded-lg cursor-pointer transition-colors"
-            >
-              Oracle View
             </button>
           </div>
         </div>
