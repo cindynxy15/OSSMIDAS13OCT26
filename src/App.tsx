@@ -4,8 +4,8 @@
  */
 
 import React, { useState } from 'react';
-import { OptionLetter, ScoreRecord, BlendedPersonaResult } from './types/quiz';
-import { QUIZ_QUESTIONS, calculatePersonaResult } from './data/quizData';
+import { OptionLetter, ScoreRecord, BlendedPersonaResult, QuizQuestion } from './types/quiz';
+import { QUIZ_QUESTIONS, calculatePersonaResult, shuffleQuestions } from './data/quizData';
 import { Header } from './components/Header';
 import { QuizStepper } from './components/QuizStepper';
 import { PersonaResult } from './components/PersonaResult';
@@ -14,6 +14,7 @@ import { MidasGuideModal } from './components/MidasGuideModal';
 import { GoldenCursorTrail } from './components/GoldenCursorTrail';
 
 export default function App() {
+  const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>(() => shuffleQuestions());
   const [answers, setAnswers] = useState<Record<number, OptionLetter>>({});
   const [view, setView] = useState<'quiz' | 'result' | 'all-roles'>('quiz');
   const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
@@ -32,6 +33,7 @@ export default function App() {
 
   const handleReset = () => {
     setAnswers({});
+    setShuffledQuestions(shuffleQuestions());
     setView('quiz');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -73,6 +75,7 @@ export default function App() {
         {view === 'quiz' && (
           <div className="flex-1 flex flex-col">
             <QuizStepper
+              questions={shuffledQuestions}
               answers={answers}
               onSelectOption={handleSelectOption}
               onFinishQuiz={handleFinishQuiz}

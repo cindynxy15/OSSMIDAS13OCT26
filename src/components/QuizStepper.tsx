@@ -1,34 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import { OptionLetter, QuizOption, PersonaKey } from '../types/quiz';
+import { OptionLetter, QuizOption, PersonaKey, QuizQuestion } from '../types/quiz';
 import { QUIZ_QUESTIONS, PERSONAS, MIDAS_GOLDEN_AVATAR } from '../data/quizData';
 import { goldenSound } from '../utils/audio';
 
 interface QuizStepperProps {
+  questions?: QuizQuestion[];
   answers: Record<number, OptionLetter>;
   onSelectOption: (questionId: number, letter: OptionLetter) => void;
   onFinishQuiz: () => void;
 }
 
 export const QuizStepper: React.FC<QuizStepperProps> = ({
+  questions = QUIZ_QUESTIONS,
   answers,
   onSelectOption,
   onFinishQuiz,
 }) => {
+  const activeQuestions = questions;
   const [currentIndex, setCurrentIndex] = useState<number>(() => {
-    for (let i = 0; i < QUIZ_QUESTIONS.length; i++) {
-      if (!answers[QUIZ_QUESTIONS[i].id]) {
+    for (let i = 0; i < activeQuestions.length; i++) {
+      if (!answers[activeQuestions[i].id]) {
         return i;
       }
     }
     return 0;
   });
 
+  // Keep index synchronized when questions are reshuffled on a new attempt
+  useEffect(() => {
+    for (let i = 0; i < activeQuestions.length; i++) {
+      if (!answers[activeQuestions[i].id]) {
+        setCurrentIndex(i);
+        return;
+      }
+    }
+    setCurrentIndex(0);
+  }, [activeQuestions]);
+
   const [showLivePulse, setShowLivePulse] = useState<boolean>(false);
 
-  const currentQ = QUIZ_QUESTIONS[currentIndex];
-  const currentAnswer = answers[currentQ.id];
+  const currentQ = activeQuestions[currentIndex] || activeQuestions[0];
+  const currentAnswer = currentQ ? answers[currentQ.id] : undefined;
   const answeredCount = Object.keys(answers).length;
-  const isAllAnswered = answeredCount === QUIZ_QUESTIONS.length;
+  const isAllAnswered = answeredCount === activeQuestions.length;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -46,7 +60,7 @@ export const QuizStepper: React.FC<QuizStepperProps> = ({
 
       if (matchedOption) {
         handlePick(matchedOption.letter);
-      } else if (e.key === 'ArrowRight' && currentIndex < QUIZ_QUESTIONS.length - 1) {
+      } else if (e.key === 'ArrowRight' && currentIndex < activeQuestions.length - 1) {
         setCurrentIndex((prev) => prev + 1);
       } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
         setCurrentIndex((prev) => prev - 1);
@@ -55,12 +69,12 @@ export const QuizStepper: React.FC<QuizStepperProps> = ({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, currentQ]);
+  }, [currentIndex, currentQ, activeQuestions.length]);
 
   const handlePick = (letter: OptionLetter) => {
     goldenSound.playGoldenChime();
     onSelectOption(currentQ.id, letter);
-    if (currentIndex < QUIZ_QUESTIONS.length - 1) {
+    if (currentIndex < activeQuestions.length - 1) {
       setTimeout(() => {
         setCurrentIndex((prev) => prev + 1);
       }, 200);
@@ -75,7 +89,7 @@ export const QuizStepper: React.FC<QuizStepperProps> = ({
   };
 
   Object.entries(answers).forEach(([qIdStr, chosenLetter]) => {
-    const q = QUIZ_QUESTIONS.find((item) => item.id === Number(qIdStr));
+    const q = activeQuestions.find((item) => item.id === Number(qIdStr)) || QUIZ_QUESTIONS.find((item) => item.id === Number(qIdStr));
     const opt = q?.options.find((o) => o.letter === chosenLetter);
     if (opt) {
       liveScores[opt.personaKey] += 1;
@@ -121,7 +135,7 @@ export const QuizStepper: React.FC<QuizStepperProps> = ({
         <div className="w-full bg-[#0a0c10] border border-amber-500/20 rounded-full h-2.5 mt-5 overflow-hidden">
           <div
             className="bg-gradient-to-r from-amber-600 via-yellow-400 to-amber-300 h-2.5 rounded-full transition-all duration-300 ease-out shadow-sm"
-            style={{ width: `${((currentIndex + 1) / QUIZ_QUESTIONS.length) * 100}%` }}
+            style={{ width: `${((currentIndex + 1) / activeQuestions.length) * 100}%` }}
           />
         </div>
 
@@ -239,7 +253,7 @@ export const QuizStepper: React.FC<QuizStepperProps> = ({
 
           {/* Quick jump dot indicators */}
           <div className="hidden sm:flex items-center gap-1.5">
-            {QUIZ_QUESTIONS.map((q, idx) => {
+            {activeQuestions.map((q, idx) => {
               const hasAnswered = !!answers[q.id];
               const isCurrent = idx === currentIndex;
               return (
@@ -261,7 +275,7 @@ export const QuizStepper: React.FC<QuizStepperProps> = ({
             })}
           </div>
 
-          {currentIndex === QUIZ_QUESTIONS.length - 1 ? (
+          {currentIndex === activeQuestions.length - 1 ? (
             <button
               onClick={() => {
                 goldenSound.playGoldenFanfare();
@@ -278,7 +292,7 @@ export const QuizStepper: React.FC<QuizStepperProps> = ({
             </button>
           ) : (
             <button
-              onClick={() => setCurrentIndex((prev) => Math.min(QUIZ_QUESTIONS.length - 1, prev + 1))}
+              onClick={() => setCurrentIndex((prev) => Math.min(activeQuestions.length - 1, prev + 1))}
               className="px-4 py-2 text-xs sm:text-sm font-cinzel font-semibold rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-950 hover:brightness-110 transition-colors cursor-pointer flex items-center gap-1.5"
             >
               Next →
