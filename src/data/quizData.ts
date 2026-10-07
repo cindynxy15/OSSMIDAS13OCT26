@@ -1,4 +1,4 @@
-import { PersonaDetails, PersonaKey, QuizQuestion, BlendedPersonaResult } from '../types/quiz';
+import { PersonaDetails, PersonaKey, QuizQuestion, BlendedPersonaResult, OptionLetter } from '../types/quiz';
 
 import midasAvatarImg from '../assets/images/midas_golden_avatar_1791263723464.jpg';
 import medallionMentorImg from '../assets/images/midas_medallion_mentor_1791276503522.jpg';
@@ -251,13 +251,32 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   }
 ];
 
+const OPTION_LETTERS: OptionLetter[] = ['A', 'B', 'C', 'D'];
+
 export function shuffleQuestions(questions: QuizQuestion[] = QUIZ_QUESTIONS): QuizQuestion[] {
-  const shuffled = [...questions];
-  for (let i = shuffled.length - 1; i > 0; i--) {
+  // 1. Shuffle question order
+  const shuffledQuestions = [...questions];
+  for (let i = shuffledQuestions.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    [shuffledQuestions[i], shuffledQuestions[j]] = [shuffledQuestions[j], shuffledQuestions[i]];
   }
-  return shuffled;
+
+  // 2. Shuffle options A, B, C, D within each question for every attempt
+  return shuffledQuestions.map((q) => {
+    const shuffledOptions = [...q.options];
+    for (let i = shuffledOptions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
+    }
+
+    return {
+      ...q,
+      options: shuffledOptions.map((opt, index) => ({
+        ...opt,
+        letter: OPTION_LETTERS[index] || opt.letter,
+      })),
+    };
+  });
 }
 
 export function calculatePersonaResult(scores: Record<PersonaKey, number>): BlendedPersonaResult {

@@ -47,7 +47,7 @@ export default function App() {
   };
 
   Object.entries(answers).forEach(([qIdStr, chosenLetter]) => {
-    const q = QUIZ_QUESTIONS.find((item) => item.id === Number(qIdStr));
+    const q = shuffledQuestions.find((item) => item.id === Number(qIdStr)) || QUIZ_QUESTIONS.find((item) => item.id === Number(qIdStr));
     const opt = q?.options.find((o) => o.letter === chosenLetter);
     if (opt) {
       scores[opt.personaKey] += 1;

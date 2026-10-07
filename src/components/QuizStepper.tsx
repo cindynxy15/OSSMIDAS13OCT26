@@ -201,7 +201,7 @@ export const QuizStepper: React.FC<QuizStepperProps> = ({
             const isSelected = currentAnswer === opt.letter;
             return (
               <button
-                key={opt.letter}
+                key={`${currentQ.id}-${opt.personaKey}`}
                 onClick={() => handlePick(opt.letter)}
                 className={`w-full text-left p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer flex items-start gap-4 group ${
                   isSelected
